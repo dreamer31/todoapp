@@ -15,7 +15,7 @@
 	<div class="container">
             <div class="content">
                 <h1>TodoApp</h1>
-                <p class="tagline">a Django todo app</p>
+               
                 <form action="" method="post">
                 {% csrf_token %} <!-- csrf token for basic security -->
                     <div class="inputContainer">
@@ -57,6 +57,8 @@
                 </form>
 
             </div><!-- content -->
+
+
 
             <button class="taskDelete" name="taskDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Delete Tasks</button>
 
