@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import path, include
+import todolist.views
 from todolist.views import index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="TodoList"),
-]
+    path('', include('todolist.urls')),
+    path('register', todolist.views.register_user, name='register_user'),
+];
+         
+ 

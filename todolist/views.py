@@ -4,6 +4,9 @@ from __future__ import unicode_literals
 from django.shortcuts import render,redirect
 from .models import TodoList, Category
 import datetime
+from todolist.models import User 
+from django.http import HttpResponseRedirect
+
 # Create your views here.
 
 def index(request): #the index view
@@ -25,3 +28,15 @@ def index(request): #the index view
 				todo = TodoList.objects.get(id=int(todo_id)) #getting todo id
 				todo.delete() #deleting todo
 	return render(request, "index.html", {"todos": todos, "categories":categories})
+
+def register_user(request):
+     if request.method == 'GET':
+         return render(request,"todolist/register_user.html")
+ 
+     elif request.method == 'POST':
+         nombre = request.POST['nombre']
+         contraseña = request.POST['contraseña']
+         apodo = request.POST['apodo']
+         mail = request.POST['mail']
+         user = User.objects.create_user(username=nombre, password=contraseña,email=mail,apodo=apodo)
+         return HttpResponseRedirect('/')
